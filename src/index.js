@@ -6,6 +6,7 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 const { sequelize } = require("./lib/sequelize");
+const { tagRoutes } = require("./routes");
 sequelize.sync({ alter: true });
 
 const app = express();
@@ -16,6 +17,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("<h1>Pict perfect API</h1>");
 });
+
+app.use("/tags", tagRoutes);
 
 app.listen(PORT, () => {
   console.log("Listening in port", PORT);
