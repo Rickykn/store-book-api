@@ -14,6 +14,8 @@ const Book = require("../models/book")(sequelize);
 const Tag = require("../models/tag")(sequelize);
 const BookTag = require("../models/book-tag")(sequelize);
 
+Book.belongsToMany(Tag, { through: BookTag, foreignKey: "book_id" });
+Tag.belongsToMany(Book, { through: BookTag, foreignKey: "tag_id" });
 Book.hasMany(BookTag, { foreignKey: "book_id" });
 BookTag.belongsTo(Book, { foreignKey: "book_id" });
 Tag.hasMany(BookTag, { foreignKey: "tag_id" });
