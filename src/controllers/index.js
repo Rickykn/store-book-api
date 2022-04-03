@@ -1,5 +1,6 @@
-const postControllers = require("./tags");
-
+const tagControllers = require("./tags");
+const bookControllers = require("./tags");
 module.exports = {
-  postControllers,
+  tagControllers,
+  bookControllers,
 };

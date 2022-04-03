@@ -6,7 +6,7 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 const { sequelize } = require("./lib/sequelize");
-const { tagRoutes } = require("./routes");
+const { tagRoutes, bookRoutes } = require("./routes");
 sequelize.sync({ alter: true });
 
 const app = express();
@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/tags", tagRoutes);
+app.use("/books", bookRoutes);
 
 app.listen(PORT, () => {
   console.log("Listening in port", PORT);
