@@ -58,6 +58,26 @@ const bookControllers = {
       });
     }
   },
+  deleteBookById: async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      const deletedBook = await Book.destroy({
+        where: {
+          id,
+        },
+      });
+
+      return res.status(201).json({
+        message: "Deleted Book",
+      });
+    } catch (error) {
+      console.log(err);
+      return res.status(500).json({
+        message: "Server error",
+      });
+    }
+  },
 };
 
 module.exports = bookControllers;
