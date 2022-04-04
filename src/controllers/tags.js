@@ -35,6 +35,26 @@ const tagConstrollers = {
       });
     }
   },
+  deleteTagById: async (req, res) => {
+    try {
+      const id = req.params.id;
+
+      await Tag.destroy({
+        where: {
+          id: id,
+        },
+      });
+
+      return res.status(200).json({
+        message: "tags deleted",
+      });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({
+        message: "server error",
+      });
+    }
+  },
 };
 
 module.exports = tagConstrollers;
